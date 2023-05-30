@@ -6,6 +6,8 @@ import { MailOutlined, GoogleOutlined} from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
+
+
 const Login = ({ history }) => {
 
     const [email, setEmail] = useState("");
@@ -24,13 +26,17 @@ const Login = ({ history }) => {
             const { user } = result;
             const idTokenResult = await user.getIdTokenResult();
 
-            dispatch({
+            createOrUpdateUser(idTokenResult.token).then((res) => {
+              dispatch({
                 type: "LOGGED_IN_USER",
                 payload: {
-                email: user.email,
-                token: idTokenResult.token,
+                  name: res.data.name,
+                  email: user.email,
+                  token: idTokenResult.token,
                 },
             });
+            }).catch();
+
             history.push("/");
         } catch (error) {
             console.log(error);
@@ -45,6 +51,7 @@ const Login = ({ history }) => {
       .then(async (result) => {
         const { user } = result;
         const idTokenResult = await user.getIdTokenResult();
+
         dispatch({
           type: "LOGGED_IN_USER",
           payload: {
@@ -52,7 +59,7 @@ const Login = ({ history }) => {
             token: idTokenResult.token,
           },
         });
-        history.push("/");
+        //history.push("/");
       })
       .catch((err) => {
         console.log(err);

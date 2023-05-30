@@ -3,10 +3,8 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const {readdirSync} = require("fs") //node module care iti da access la file system
 require("dotenv").config();
-
-// import routes
-const authRoutes = require("./routes/auth");
 
 // app e constanta in care e stocat serverul- express() e functia care creaza serverul
 const app = express();
@@ -27,7 +25,12 @@ app.use(bodyParser.json({ limit: "2mb" }));
 app.use(cors());
 
 // routes middleware
-app.use("/api", authRoutes);
+//parcurge fiecare fisier din routes si il require
+//doar sa le require nu e de ajuns, trebuie sa le folosesti ca middlewear
+//cu app.use le folosesti ca middlewear
+//similiar cu app.use("/api", authRoutes);
+//asa iti incarci toate rutele
+readdirSync('./routes').map((r) => app.use("/api", require("./routes/" + r)));
 
 // route
 app.get("/api", (req, res) => {

@@ -3,10 +3,14 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/create-or-update-user", (req, res) => {
-  res.json({
-    data: "hey you hit create-or-update-user API endpoint",
-  });
-});
+// import middlewear
+const {authCheck} = require('../middlewares/auth');
+
+// trebuie importata cu destruct {}, altfel nu se importa bine
+// controller
+const {createOrUpdateUser} = require("../controllers/auth");
+
+// ruta definita
+router.post("/create-or-update-user", authCheck, createOrUpdateUser);
 
 module.exports = router;
