@@ -2,7 +2,7 @@ const admin = require('../firebase');
 
 //next e callback
 exports.authCheck = async (req, res, next) => {
-//console.log(req.headers); //token
+//console.log(req.headers); //verificare token //primul layer de securitate
 try {
     const firebase = await admin.auth().verifyIdToken(req.headers.authtoken);
     console.log('FIREBASE USER IN AUTHCHECK', firebaseUser);
@@ -13,4 +13,17 @@ try {
         err: "Invalid or expired token"
     });
 }
+};
+
+exports.adminCheck = async (req, res, next) => {
+    const {email} = req.user;
+    const adminUser = await User.findOne({email}).exec();
+
+    if(adminUser.role !== 'admin') {
+        res.status(403).json({
+            err: "Nu sunteti admin"
+        });
+    } else {
+        next();
+    }
 };
