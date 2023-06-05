@@ -3,7 +3,7 @@ const User = require('../models/user')
 // functia este exportata ca variabila createOrUpdateUser
 exports.createOrUpdateUser = async (req, res) => {
   try {
-    const {name, picture, email} = req.user;
+    const {picture, email} = req.user;
 
     const user = await User.findOneAndUpdate(
       {email: email}, 
