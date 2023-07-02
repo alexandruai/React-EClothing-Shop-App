@@ -6,7 +6,7 @@ import { SearchOutlined } from "@ant-design/icons";
 const Search = () => {
   const dispatch = useDispatch();
   const { search } = useSelector((state) => ({ ...state }));
-  const { text } = search;
+  const { text } = search || {};
 
   const history = useHistory();
 
