@@ -9,9 +9,9 @@ import FileUpload from "../../../components/forms/FileUpload";
 import { LoadingOutlined } from "@ant-design/icons";
 
 const initialState = {
-  title: "Macbook Pro",
-  description: "This is the best Apple product",
-  price: "45000",
+  title: "Product Title",
+  description: "Product Description",
+  price: "99",
   categories: [],
   category: "",
   subs: [],
@@ -34,10 +34,10 @@ const initialState = {
     //     "https://res.cloudinary.com/dcqjrwaoi/image/upload/v1599480913/ho6wnp7sugyemnmtoogf.jpg",
     // },
   ],
-  colors: ["Black", "Brown", "Silver", "White", "Blue"],
-  brands: ["Apple", "Samsung", "Microsoft", "Lenovo", "ASUS"],
+  colors: ["Black", "Brown", "Silver", "White", "Blue", "Green", "Red", "Pink"],
+  brands: ["H&M", "Mango", "Mohito", "Berska", "Zara"],
   color: "White",
-  brand: "Apple",
+  brand: "Mango",
 };
 
 const ProductCreate = () => {

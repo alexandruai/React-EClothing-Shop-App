@@ -17,8 +17,8 @@ const initialState = {
   shipping: "",
   quantity: "",
   images: [],
-  colors: ["Black", "Brown", "Silver", "White", "Blue"],
-  brands: ["Apple", "Samsung", "Microsoft", "Lenovo", "ASUS"],
+  colors: ["Black", "Brown", "Silver", "White", "Blue", "Green", "Red", "Pink"],
+  brands: ["H&M", "Mango", "Mohito", "Berska", "Zara"],
   color: "",
   brand: "",
 };
