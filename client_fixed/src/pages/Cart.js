@@ -1,11 +1,19 @@
-import React from "react";
+//import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ProductCardInCheckout from "../components/cards/ProductCardInCheckout";
 import { userCart } from "../functions/user";
+import FileUpload from "../components/forms/FileUpload";
+
+const initialState = {
+  images: [],
+};
 
 const Cart = ({ history }) => {
   const { cart, user } = useSelector((state) => ({ ...state }));
+  const [loading, setLoading] = useState(false);
+  const [values, setValues] = useState(initialState);
   const dispatch = useDispatch();
 
   const getTotal = () => {
@@ -104,6 +112,17 @@ const Cart = ({ history }) => {
               >
                 Pay Cash on Delivery
               </button>
+              <hr />
+          <div className="p-3">
+            <button>
+              <FileUpload
+                values={values}
+                setValues={setValues}
+                setLoading={setLoading}
+              />
+            </button>
+          </div>
+          <hr />
             </>
           ) : (
             <button className="btn btn-sm btn-primary mt-2">
