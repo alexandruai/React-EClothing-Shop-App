@@ -9,7 +9,9 @@ const Home = () => {
   return (
     <>
       <div className="jumbotron text-danger h1 font-weight-bold text-center">
-        <Jumbotron text={["Find it", "Try it", "Get it"]} />
+        <Jumbotron text={["Ride with Our Premium Auto Accessories",
+         "Get Back on the Road with Confidence", 
+         "Get it"]} />
       </div>
 
       <h4 className="text-center p-3 mt-5 mb-5 display-4 jumbotron">

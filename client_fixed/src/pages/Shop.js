@@ -28,7 +28,7 @@ const Shop = () => {
   const [subs, setSubs] = useState([]);
   const [sub, setSub] = useState("");
   const [brands, setBrands] = useState([
-    "H&M", "Mango", "Mohito", "Berska", "Zara"
+    "Bosch", "Valeo", "Castrol", "Shell", "Michelin", "Continental", "Bridgestone"
   ]);
   const [brand, setBrand] = useState("");
   const [colors, setColors] = useState([

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { HeartOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Laptop from "../../images/laptop.png";
+import fancyCar from "../../images/fancyCar.png"
 import ProductListItems from "./ProductListItems";
 import StarRating from "react-star-ratings";
 import RatingModal from "../modal/RatingModal";
@@ -80,7 +80,7 @@ const SingleProduct = ({ product, onStarClick, star }) => {
             {images && images.map((i) => <img src={i.url} key={i.public_id} />)}
           </Carousel>
         ) : (
-          <Card cover={<img src={Laptop} className="mb-3 card-image" />}></Card>
+          <Card cover={<img src={fancyCar} className="mb-3 card-image" />}></Card>
         )}
 
         <Tabs type="card">

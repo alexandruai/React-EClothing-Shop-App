@@ -56,7 +56,7 @@ const productSchema = new mongoose.Schema(
     },
     brand: {
       type: String,
-      enum: ["H&M", "Mango", "Mohito", "Berska", "Zara"],
+      enum: ["Bosch", "Valeo", "Castrol", "Shell", "Michelin", "Continental", "Bridgestone"],
     },
     ratings: [
       {

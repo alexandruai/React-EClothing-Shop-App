@@ -18,7 +18,7 @@ const initialState = {
   quantity: "",
   images: [],
   colors: ["Black", "Brown", "Silver", "White", "Blue", "Green", "Red", "Pink"],
-  brands: ["H&M", "Mango", "Mohito", "Berska", "Zara"],
+  brands: ["Bosch", "Valeo", "Castrol", "Shell", "Michelin", "Continental", "Bridgestone"],
   color: "",
   brand: "",
 };

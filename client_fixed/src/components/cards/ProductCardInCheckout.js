@@ -1,6 +1,6 @@
 import React from "react";
 import ModalImage from "react-modal-image";
-import laptop from "../../images/laptop.png";
+import fancyCar from "../../images/fancyCar.png"
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import {
@@ -98,7 +98,7 @@ const ProductCardInCheckout = ({ p }) => {
             {p.images.length ? (
               <ModalImage small={p.images[0].url} large={p.images[0].url} />
             ) : (
-              <ModalImage small={laptop} large={laptop} />
+              <ModalImage small={fancyCar} large={fancyCar} />
             )}
           </div>
         </td>

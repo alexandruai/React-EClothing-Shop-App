@@ -11,7 +11,7 @@ const app = express();
 
 // db
 mongoose
-  .connect(process.env.DATABASE, {
+  .connect('mongodb://localhost:27017/ecom-cloting-db', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,

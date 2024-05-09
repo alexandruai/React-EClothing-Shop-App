@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "antd";
-import laptop from "../../images/laptop.png";
+import fancyCar from "../../images/fancyCar.png"
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
@@ -14,7 +14,7 @@ const AdminProductCard = ({ product, handleRemove }) => {
     <Card
       cover={
         <img
-          src={images && images.length ? images[0].url : laptop}
+          src={images && images.length ? images[0].url : fancyCar}
           style={{ height: "150px", objectFit: "cover" }}
           className="p-1"
         />
