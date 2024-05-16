@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import AdminNav from "../../components/nav/AdminNav";
 import { getOrders, changeStatus, getMostOrderedProducts } from "../../functions/admin";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Orders from "../../components/order/Orders";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const AdminDashboard = () => {
   const [orders, setOrders] = useState([]);
@@ -24,8 +24,13 @@ const AdminDashboard = () => {
 
   const loadMostOrderedProducts = () => {
     getMostOrderedProducts(user.token).then((res) => {
-      setMostOrderedProducts(res);
-      console.log(mostOrderedProducts)
+      const products = res.map(product => ({
+        productId: product._id,
+        productName: product.description,
+        quantity: product.quantity
+      }));
+      console.log("Formatted products: ", products);
+      setMostOrderedProducts(products);
     });
   };
 
@@ -35,7 +40,6 @@ const AdminDashboard = () => {
       loadOrders();
     });
   };
-  
 
   return (
     <div className="container-fluid">
@@ -43,23 +47,25 @@ const AdminDashboard = () => {
         <div className="col-md-2">
           <AdminNav />
         </div>
-
-        <div className="col-md-5">
+        <div className="col-md-10">
           <h4>Admin Dashboard</h4>
-          <div className="col-md-5">
-          <h4>Most Ordered Products</h4>
-          <LineChart width={500} height={300} data={mostOrderedProducts}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="title" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="totalOrders" stroke="#8884d8" activeDot={{ r: 8 }} />
-          </LineChart>
-        </div>
+          <div className="col-md-12">
+            <h4>Most Ordered Products</h4>
+            {mostOrderedProducts.length > 0 ? (
+              <BarChart width={600} height={300} data={mostOrderedProducts}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="productName" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="quantity" fill="#8884d8" />
+              </BarChart>
+            ) : (
+              <p>Loading data...</p>
+            )}
+          </div>
           <Orders orders={orders} handleStatusChange={handleStatusChange} />
         </div>
-        
       </div>
     </div>
   );

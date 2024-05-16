@@ -18,6 +18,17 @@ export const changeStatus = async (orderId, orderStatus, authtoken) =>
     }
   );
 
+// Fetch product details by productId
+const getProductDetails = async (productId) => {
+  try {
+    const response = await axios.get(`${process.env.REACT_APP_API}/products/${productId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching product details:', error);
+    throw error;
+  }
+};
+
 export const getMostOrderedProducts = async (authtoken) => {
   try {
     const response = await axios.get(`${process.env.REACT_APP_API}/admin/orders`, {
@@ -33,7 +44,8 @@ export const getMostOrderedProducts = async (authtoken) => {
     const productMap = {};
     orders.forEach(order => {
       order.products.forEach(product => {
-        const { product: productId, count } = product;
+        const productId = product.product._id;  // Ensure productId is a string or number
+        const count = product.count;
         if (productMap[productId]) {
           productMap[productId] += count;
         } else {
@@ -42,14 +54,40 @@ export const getMostOrderedProducts = async (authtoken) => {
       });
     });
 
-    // Sort the products by their total orders
-    const sortedProducts = Object.entries(productMap).sort((a, b) => b[1] - a[1]);
-
-    // Return the top most ordered products
-    const mostOrderedProducts = sortedProducts.slice(0, 5).map(([productId, quantity]) => ({
+    // Convert the productMap to an array
+    const productArray = Object.keys(productMap).map(productId => ({
       productId,
-      quantity,
+      quantity: productMap[productId],
     }));
+
+    // Get product details and merge with the quantities
+    const productDetailsMap = {};
+    await Promise.all(productArray.map(async ({ productId, quantity }) => {
+      const productDetailsArray = await getProductDetails(productId);
+
+      // Ensure productDetailsArray is not empty and is an array
+      if (!productDetailsArray || productDetailsArray.length === 0) {
+        return;
+      }
+
+      // Assuming productDetailsArray contains a single product detail object
+      const productDetails = productDetailsArray[0];
+
+      // Combine product details with quantity
+      if (productDetailsMap[productId]) {
+        productDetailsMap[productId].quantity += quantity;
+      } else {
+        productDetailsMap[productId] = {
+          _id: productDetails._id,
+          title: productDetails.title, // Assuming there's a 'title' property in the product details
+          description: productDetails.description,
+          quantity
+        };
+      }
+    }));
+
+    // Convert the productDetailsMap to an array
+    const mostOrderedProducts = Object.values(productDetailsMap);
 
     return mostOrderedProducts;
   } catch (error) {
