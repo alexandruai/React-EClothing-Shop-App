@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ProductCardInCheckout from "../components/cards/ProductCardInCheckout";
 import { userCart } from "../functions/user";
-import FileUpload from "../components/forms/FileUpload";
 
 const initialState = {
   images: [],
@@ -112,16 +111,6 @@ const Cart = ({ history }) => {
               >
                 Pay Cash on Delivery
               </button>
-              <hr />
-          <div className="p-3">
-            <button>
-              <FileUpload
-                values={values}
-                setValues={setValues}
-                setLoading={setLoading}
-              />
-            </button>
-          </div>
           <hr />
             </>
           ) : (

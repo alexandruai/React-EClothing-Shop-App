@@ -8,6 +8,8 @@ import {
   LogoutOutlined,
   ShoppingOutlined,
   ShoppingCartOutlined,
+  CalendarOutlined,
+  CarOutlined 
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import firebase from "firebase/compat/app";
@@ -21,7 +23,8 @@ const Header = () => {
   const [current, setCurrent] = useState("home");
 
   let dispatch = useDispatch();
-  let { user, cart } = useSelector((state) => ({ ...state }));
+  let { user, cart, appManager } = useSelector((state) => ({ ...state }));
+
 
   let history = useHistory();
 
@@ -44,6 +47,18 @@ const Header = () => {
       <Item key="home" icon={<AppstoreOutlined />}>
         <Link to="/">Home</Link>
       </Item>
+
+      <Item key="appointment" icon={<CarOutlined />}>
+        <Link to="/appointment"> Car Inspection Appointment</Link>
+      </Item>
+
+      {/* <Item key="appointment" icon={<CalendarOutlined />}>
+        <Link to="/appointment">
+          <Badge count={appManager.length} offset={[9, 0]}>
+              Service Appointment
+          </Badge>
+        </Link>
+      </Item> */}
 
       <Item key="shop" icon={<ShoppingOutlined />}>
         <Link to="/shop">Shop</Link>

@@ -21,6 +21,12 @@ const UserNav = () => (
           Wishlist
         </Link>
       </li>
+
+      <li className="nav-item">
+        <Link to="/user/userAppoinments" className="nav-link">
+          Appoinments
+        </Link>
+      </li>
     </ul>
   </nav>
 )

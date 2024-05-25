@@ -16,6 +16,7 @@ import UserRoute from "./components/routes/UserRoute";
 import AdminRoute from "./components/routes/AdminRoute";
 import Password from "./pages/user/Password";
 import Wishlist from "./pages/user/Wishlist";
+import UserAppointments from "./pages/user/UserAppointments";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import CategoryCreate from "./pages/admin/category/CategoryCreate";
 import CategoryUpdate from "./pages/admin/category/CategoryUpdate";
@@ -25,6 +26,13 @@ import ProductCreate from "./pages/admin/product/ProductCreate";
 import AllProducts from "./pages/admin/product/AllProducts";
 import ProductUpdate from "./pages/admin/product/ProductUpdate";
 import Product from "./pages/Product";
+import ServiceCreate from "./pages/admin/service/ServiceCreate";
+import AllServices from "./pages/admin/service/AllServices";
+import ServiceUpdate from "./pages/admin/service/ServiceUpdate";
+import AllAppointments from "./pages/admin/appointment/AllAppointments";
+import Service from "./pages/Service";
+import AppointmentCreate from "./pages/AppointmentCreate";
+
 import CategoryHome from "./pages/category/CategoryHome";
 import SubHome from "./pages/sub/SubHome";
 import Shop from "./pages/Shop";
@@ -81,6 +89,8 @@ const App = () => {
         <UserRoute exact path="/user/history" component={History} />
         <UserRoute exact path="/user/password" component={Password} />
         <UserRoute exact path="/user/wishlist" component={Wishlist} />
+
+        <UserRoute exact path="/user/userAppoinments" component={UserAppointments} />        
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute exact path="/admin/category" component={CategoryCreate} />
         <AdminRoute
@@ -97,7 +107,20 @@ const App = () => {
           path="/admin/product/:slug"
           component={ProductUpdate}
         />
+        <AdminRoute exact path="/admin/service" component={ServiceCreate} />
+        <AdminRoute exact path="/admin/services" component={AllServices} />
+        <AdminRoute
+          exact
+          path="/admin/service/:slug"
+          component={ServiceUpdate}
+        />
+        {/* de adaugat programari */}
+        <AdminRoute exact path="/admin/appointment" component={AllAppointments} />
         <Route exact path="/product/:slug" component={Product} />
+        <Route exact path="/service/:slug" component={Service} />
+        <Route exact path="/appointment" component={AppointmentCreate} />
+        <Route exact path="/appointment/:serviceID" component={AppointmentCreate} />
+             
         <Route exact path="/category/:slug" component={CategoryHome} />
         <Route exact path="/sub/:slug" component={SubHome} />
         <Route exact path="/shop" component={Shop} />

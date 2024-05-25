@@ -24,7 +24,7 @@ const FileUpload = ({ values, setValues, setLoading }) => {
           100,
           0,
           (uri) => {
-            // console.log(uri);
+           console.log(uri);
             axios
               .post(
                 `${process.env.REACT_APP_API}/uploadimages`,
