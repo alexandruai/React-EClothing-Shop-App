@@ -8,7 +8,7 @@ import {
   LogoutOutlined,
   ShoppingOutlined,
   ShoppingCartOutlined,
-  CalendarOutlined,
+  HeartOutlined ,
   CarOutlined 
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
@@ -52,14 +52,6 @@ const Header = () => {
         <Link to="/appointment"> Car Inspection Appointment</Link>
       </Item>
 
-      {/* <Item key="appointment" icon={<CalendarOutlined />}>
-        <Link to="/appointment">
-          <Badge count={appManager.length} offset={[9, 0]}>
-              Service Appointment
-          </Badge>
-        </Link>
-      </Item> */}
-
       <Item key="shop" icon={<ShoppingOutlined />}>
         <Link to="/shop">Shop</Link>
       </Item>
@@ -70,6 +62,10 @@ const Header = () => {
             Cart
           </Badge>
         </Link>
+      </Item>
+
+      <Item key="shop" icon={<HeartOutlined  />}>
+        <Link to="/user/wishlist">User Menu</Link>
       </Item>
 
       {!user && (

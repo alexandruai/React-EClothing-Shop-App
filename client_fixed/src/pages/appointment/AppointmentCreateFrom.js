@@ -10,6 +10,7 @@ const AppointmentCreateForm = ({
   const {
     serviceId,
     status,
+    comment,
     user,
     appointmentDate,
     appointmentHour,

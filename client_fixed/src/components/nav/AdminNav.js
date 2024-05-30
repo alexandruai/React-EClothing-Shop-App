@@ -23,7 +23,7 @@ const AdminNav = () => (
       </li>
 
       <li className="nav-item">
-        <Link to="/admin/service" className="nav-link">
+        <Link to="/admin/appointments" className="nav-link">
           Appoitments
         </Link>
       </li>

@@ -14,8 +14,14 @@ const appointmentSchema = new mongoose.Schema(
     },
     status: {
         type: String,
+        default: "Booked",
         required: true,
     },
+    comment: {
+      type: String,
+      default: "No observations",
+      required: true,
+  },
     appointmentDate: {
       type: Date,
       required: true,

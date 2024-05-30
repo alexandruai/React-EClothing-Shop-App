@@ -15,12 +15,11 @@ export const createAppointment = async (appointment, authtoken) => {
 };
 
 // Get user's appointments
-//Vezi cum o faci
 export const getUserAppointments = async (userName) => {
   try {
-
-    // const response = await axios.get(`${process.env.REACT_APP_API}/service/${serviceId}`);
-    // return response.data;
+    const response = await axios.get(`${process.env.REACT_APP_API}/appointments/user/${userName}`);
+    console.log("User Response ", response)
+    return response.data;
   } catch (error) {
     throw new Error(error.response.data.error);
   }

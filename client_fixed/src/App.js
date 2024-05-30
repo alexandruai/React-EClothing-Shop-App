@@ -85,12 +85,12 @@ const App = () => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/register/complete" component={RegisterComplete} />
-        <Route exact path="/forgot/password" component={ForgotPassword} />
+        <Route exact path="/forgot/passwordRoute" component={ForgotPassword} />
         <UserRoute exact path="/user/history" component={History} />
         <UserRoute exact path="/user/password" component={Password} />
         <UserRoute exact path="/user/wishlist" component={Wishlist} />
 
-        <UserRoute exact path="/user/userAppoinments" component={UserAppointments} />        
+        <UserRoute exact path="/appointments/user/:userName" component={UserAppointments} />        
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute exact path="/admin/category" component={CategoryCreate} />
         <AdminRoute
@@ -115,7 +115,7 @@ const App = () => {
           component={ServiceUpdate}
         />
         {/* de adaugat programari */}
-        <AdminRoute exact path="/admin/appointment" component={AllAppointments} />
+        <AdminRoute exact path="/admin/appointments" component={AllAppointments} />
         <Route exact path="/product/:slug" component={Product} />
         <Route exact path="/service/:slug" component={Service} />
         <Route exact path="/appointment" component={AppointmentCreate} />

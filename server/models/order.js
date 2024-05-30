@@ -24,6 +24,7 @@ const orderSchema = new mongoose.Schema(
         "Dispatched",
         "Cancelled",
         "Completed",
+        "Cash On Delivery"
       ],
     },
     orderdBy: { type: ObjectId, ref: "User" },

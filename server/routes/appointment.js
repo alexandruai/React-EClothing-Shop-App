@@ -6,7 +6,7 @@ const { createAppointment, getUserAppointments, getServiceForAppointment, getApp
 router.post('/appointment', createAppointment);
 
 // Get user's appointments
-router.get('/appointments/:userName', getUserAppointments);
+router.get('/appointments/user/:userName', getUserAppointments);
 
 // Get appointment for a specific service
 router.get('/appointments/:serviceId', getServiceForAppointment);

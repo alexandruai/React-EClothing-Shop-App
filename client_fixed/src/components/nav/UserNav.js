@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-const UserNav = () => (
+const UserNav = ({ userName }) => (
     <nav>
     <ul className="nav flex-column">
       <li className="nav-item">
@@ -23,7 +23,7 @@ const UserNav = () => (
       </li>
 
       <li className="nav-item">
-        <Link to="/user/userAppoinments" className="nav-link">
+        <Link to={`/appointments/user/${userName}`} className="nav-link">
           Appoinments
         </Link>
       </li>

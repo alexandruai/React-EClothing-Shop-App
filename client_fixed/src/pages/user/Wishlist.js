@@ -28,7 +28,7 @@ const Wishlist = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-md-2">
-          <UserNav />
+          <UserNav userName={user.name}/>
         </div>
         <div className="col">
           <h4>Wishlist</h4>

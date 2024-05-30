@@ -19,6 +19,7 @@ const AppointmentCreate = () => {
     serviceId,
     services: serviceId ? [getServiceAppointments(serviceId)] : [],
     status: "New",
+    comment: "No observations",
     user: "",
     appointmentDate: "",
     appointmentHour: "",
@@ -48,6 +49,7 @@ const AppointmentCreate = () => {
     e.preventDefault();
     setLoading(true);
     values.status = "Booked";
+    values.comment = "No observations";
     createAppointment(values, user.token)
       .then((res) => {
         console.log(res);
